@@ -10,8 +10,6 @@
 //
 // Execute `rustlings hint rc1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
-
 use std::rc::Rc;
 
 #[derive(Debug)]
@@ -60,19 +58,25 @@ fn main() {
     println!("reference count = {}", Rc::strong_count(&sun)); // 6 references
     jupiter.details();
 
-    // TODO
-    let saturn = Planet::Saturn(Rc::new(Sun {}));
-    println!("reference count = {}", Rc::strong_count(&sun)); // 7 references
+    // Crée une instance de Planet représentant Saturne, partageant la référence au soleil.
+    let saturn = Planet::Saturn(Rc::clone(&sun));
+    // Affiche le nombre de références fortes au soleil après la création de Saturne.
+    println!("reference count = {}", Rc::strong_count(&sun)); // 7 références
+    // Affiche les détails de Saturne.
     saturn.details();
 
-    // TODO
-    let uranus = Planet::Uranus(Rc::new(Sun {}));
-    println!("reference count = {}", Rc::strong_count(&sun)); // 8 references
+    // Crée une instance de Planet représentant Uranus, partageant la référence au soleil.
+    let uranus = Planet::Uranus(Rc::clone(&sun));
+    // Affiche le nombre de références fortes au soleil après la création d'Uranus.
+    println!("reference count = {}", Rc::strong_count(&sun)); // 8 références
+    // Affiche les détails d'Uranus.
     uranus.details();
 
-    // TODO
-    let neptune = Planet::Neptune(Rc::new(Sun {}));
-    println!("reference count = {}", Rc::strong_count(&sun)); // 9 references
+    // Crée une instance de Planet représentant Neptune, partageant la référence au soleil.
+    let neptune = Planet::Neptune(Rc::clone(&sun));
+    // Affiche le nombre de références fortes au soleil après la création de Neptune.
+    println!("reference count = {}", Rc::strong_count(&sun)); // 9 références
+    // Affiche les détails de Neptune.
     neptune.details();
 
     assert_eq!(Rc::strong_count(&sun), 9);
@@ -92,14 +96,19 @@ fn main() {
     drop(mars);
     println!("reference count = {}", Rc::strong_count(&sun)); // 4 references
 
-    // TODO
-    println!("reference count = {}", Rc::strong_count(&sun)); // 3 references
+// Supprime la référence à la Terre.
+drop(earth);
+// Affiche le nombre de références fortes restantes au soleil après la suppression de la Terre.
+println!("reference count = {}", Rc::strong_count(&sun)); // 3 références
 
-    // TODO
-    println!("reference count = {}", Rc::strong_count(&sun)); // 2 references
+// Supprime la référence à Vénus.
+drop(venus);
+// Affiche le nombre de références fortes restantes au soleil après la suppression de Vénus.
+println!("reference count = {}", Rc::strong_count(&sun)); // 2 références
 
-    // TODO
-    println!("reference count = {}", Rc::strong_count(&sun)); // 1 reference
-
+// Supprime la dernière référence à Mercure.
+drop(mercury);
+// Affiche le nombre de références fortes restantes au soleil après la suppression de Mercure.
+println!("reference count = {}", Rc::strong_count(&sun)); // 1 référence
     assert_eq!(Rc::strong_count(&sun), 1);
 }

@@ -5,8 +5,8 @@
 // Execute `rustlings hint intro2` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
+// La macro pour afficher une chaine de caractères est println!
 fn main() {
-    printline!("Hello there!")
+    println!("Hello there!")
 }

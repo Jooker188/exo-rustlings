@@ -10,11 +10,12 @@
 // Execute `rustlings hint using_as` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
+// Calcule la moyenne des valeurs dans un slice de f64.
 fn average(values: &[f64]) -> f64 {
+    // Calcule la somme de toutes les valeurs dans le slice.
     let total = values.iter().sum::<f64>();
-    total / values.len()
+    // Divise la somme totale par le nombre de valeurs dans le slice pour obtenir la moyenne.
+    total / values.len() as f64
 }
 
 fn main() {

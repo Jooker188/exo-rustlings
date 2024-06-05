@@ -5,10 +5,15 @@
 // Execute `rustlings hint enums3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
 enum Message {
-    // TODO: implement the message variant types based on their usage below
+    // Variante pour quitter
+    Quit,
+    // Variante pour répéter le message donné
+    Echo(String),
+    // Variante pour déplacer vers une nouvelle position
+    Move(Point),
+    // Variante pour changer la couleur avec des composants RGB
+    ChangeColor(u8, u8, u8),
 }
 
 struct Point {
@@ -24,28 +29,41 @@ struct State {
 }
 
 impl State {
+    // Méthode pour changer la couleur de l'état
     fn change_color(&mut self, color: (u8, u8, u8)) {
         self.color = color;
     }
 
+    // Méthode pour marquer l'état comme étant prêt à quitter
     fn quit(&mut self) {
         self.quit = true;
     }
 
+    // Méthode pour répéter un message dans l'état
     fn echo(&mut self, s: String) {
         self.message = s
     }
 
+    // Méthode pour déplacer la position de l'état
     fn move_position(&mut self, p: Point) {
         self.position = p;
     }
 
+    // Méthode pour traiter les messages en fonction de leur variante
     fn process(&mut self, message: Message) {
-        // TODO: create a match expression to process the different message variants
-        // Remember: When passing a tuple as a function argument, you'll need extra parentheses:
-        // fn function((t, u, p, l, e))
+        match message {
+            // Lorsque le message est de type ChangeColor, met à jour la couleur
+            Message::ChangeColor(r, g, b) => self.color = (r, g, b),
+            // Lorsque le message est de type Echo, met à jour le message
+            Message::Echo(s) => self.message = s,
+            // Lorsque le message est de type Move, met à jour la position
+            Message::Move(x) => self.position = x,
+            // Lorsque le message est de type Quit, marque l'état comme prêt à quitter
+            Message::Quit => self.quit = true,
+        }
     }
 }
+
 
 #[cfg(test)]
 mod tests {

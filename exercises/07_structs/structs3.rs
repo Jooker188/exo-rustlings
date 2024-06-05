@@ -7,8 +7,6 @@
 // Execute `rustlings hint structs3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
 #[derive(Debug)]
 struct Package {
     sender_country: String,
@@ -17,12 +15,15 @@ struct Package {
 }
 
 impl Package {
+    // Constructeur pour créer une nouvelle instance de Package
     fn new(sender_country: String, recipient_country: String, weight_in_grams: u32) -> Package {
+       // Vérifie que le poids est supérieur ou égal à 10 grammes
         if weight_in_grams < 10 {
             // This is not how you should handle errors in Rust,
             // but we will learn about error handling later.
             panic!("Can not ship a package with weight below 10 grams.")
         } else {
+            // Retourne une nouvelle instance de Package
             Package {
                 sender_country,
                 recipient_country,
@@ -31,12 +32,15 @@ impl Package {
         }
     }
 
-    fn is_international(&self) -> ??? {
-        // Something goes here...
+    // Méthode pour vérifier si l'envoi est international
+    fn is_international(&self) -> bool {
+        self.sender_country != self.recipient_country
     }
 
-    fn get_fees(&self, cents_per_gram: u32) -> ??? {
-        // Something goes here...
+    // Méthode pour calculer les frais de transport
+    fn get_fees(&self, cents_per_gram: u32) -> u32 {
+        // Multiplie le poids en grammes par le coût par gramme
+        cents_per_gram * self.weight_in_grams
     }
 }
 
