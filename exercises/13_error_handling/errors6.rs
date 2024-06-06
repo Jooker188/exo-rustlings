@@ -25,6 +25,7 @@ impl ParsePosNonzeroError {
 
     // TODO: add another error conversion function here.
     fn from_parse(err: ParseIntError) -> ParsePosNonzeroError {
+        // Convertit une erreur de type ParseIntError en une erreur de type ParsePosNonzeroError.
         ParsePosNonzeroError::ParseInt(err)
     }
 }
