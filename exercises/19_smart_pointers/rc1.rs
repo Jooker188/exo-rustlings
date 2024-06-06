@@ -96,19 +96,19 @@ fn main() {
     drop(mars);
     println!("reference count = {}", Rc::strong_count(&sun)); // 4 references
 
-// Supprime la référence à la Terre.
-drop(earth);
-// Affiche le nombre de références fortes restantes au soleil après la suppression de la Terre.
-println!("reference count = {}", Rc::strong_count(&sun)); // 3 références
+    // Supprime la référence à la Terre.
+    drop(earth);
+    // Affiche le nombre de références fortes restantes au soleil après la suppression de la Terre.
+    println!("reference count = {}", Rc::strong_count(&sun)); // 3 références
 
-// Supprime la référence à Vénus.
-drop(venus);
-// Affiche le nombre de références fortes restantes au soleil après la suppression de Vénus.
-println!("reference count = {}", Rc::strong_count(&sun)); // 2 références
+   // Supprime la référence à Vénus.
+   drop(venus);
+   // Affiche le nombre de références fortes restantes au soleil après la suppression de Vénus.
+   println!("reference count = {}", Rc::strong_count(&sun)); // 2 références
 
-// Supprime la dernière référence à Mercure.
-drop(mercury);
-// Affiche le nombre de références fortes restantes au soleil après la suppression de Mercure.
-println!("reference count = {}", Rc::strong_count(&sun)); // 1 référence
-    assert_eq!(Rc::strong_count(&sun), 1);
+   // Supprime la dernière référence à Mercure.
+   drop(mercury);
+   // Affiche le nombre de références fortes restantes au soleil après la suppression de Mercure.
+   println!("reference count = {}", Rc::strong_count(&sun)); // 1 référence
+   assert_eq!(Rc::strong_count(&sun), 1);
 }
