@@ -13,6 +13,8 @@
 
 use std::collections::HashMap;
 
+
+// Définit un type enum Progress pour représenter l'état de progression.
 #[derive(Clone, Copy, PartialEq, Eq)]
 enum Progress {
     None,
@@ -30,13 +32,6 @@ fn count_for(map: &HashMap<String, Progress>, value: Progress) -> usize {
     count
 }
 
-
-// Définit un type enum Progress pour représenter l'état de progression.
-enum Progress {
-    Complete,
-    InProgress,
-    None,
-}
 
 fn count_iterator(map: &HashMap<String, Progress>, value: Progress) -> usize {
     // Utilise un itérateur pour parcourir chaque élément dans la hashmap.
