@@ -44,3 +44,8 @@ where
     // Appelle les méthodes some_function et other_function sur l'élément fourni et renvoie leur résultat logique ET.
     item.some_function() && item.other_function()
 }
+
+fn main() {
+        some_func(SomeStruct {});
+        some_func(OtherStruct {});
+}
